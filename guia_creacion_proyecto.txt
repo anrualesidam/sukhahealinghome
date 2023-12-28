@@ -1,0 +1,31 @@
+==============================
+crear entorno virtual
+
+1. virtualenv venv
+
+o
+
+2. C:/Users/alrub/OneDrive/Escritorio/python_3.10.11/python.exe -m venv venv
+==============================
+Activar entorno virtual
+
+1. .\venv\Scripts\activate
+
+==============================
+Integrar Firebase en Django 
+
+1. pip install django
+2. django-admin startproject startproject sukhahealinghome
+
+------------
+
+verifica creación de proyecto
+
+1. python manage.py migrate
+2. python manage.py runserver
+
+------------
+
+Creación del módulo o aplicación "medicalprocess"
+
+1. python manage.py startapp medicalprocess
