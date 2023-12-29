@@ -5,5 +5,9 @@ from django.shortcuts import render
 
 from django.shortcuts import render
 
-def hola_mundo(request):
-    return render(request, 'hola_mundo.html')
+class medicalprocess:
+    def login(self,request):
+        return render(request, 'baselogin.html')
+    
+    def contact(self, request):
+        return render(request, "contact.html")

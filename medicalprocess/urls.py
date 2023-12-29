@@ -1,7 +1,8 @@
 # mi_aplicacion/urls.py
 from django.urls import path
-from . import views
+from .views import medicalprocess
 
 urlpatterns = [
-    path('', views.hola_mundo, name='hola_mundo'),
+    path('', medicalprocess().login, name='baselogin'),
+    path('contact/', medicalprocess().contact, name='contact'),
 ]
