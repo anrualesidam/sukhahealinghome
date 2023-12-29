@@ -55,6 +55,55 @@
     {% endblock %}        
   </main>
 
+  <footer class="custom-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+              <h5>Contacto</h5>
+              <ul class="list-unstyled">
+                <li>Dirección: Dg. 74C #32ee-40</li>
+                <li> Ciudad: Medellín - Colombia</li>
+                <li>Telefono: (+57) 302 611 15 62</li>
+                <li>Email: sukhahealinghome@gmail.com</li>
+              </ul>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+              <h5>Redes Sociales</h5>
+              <ul class="list-unstyled">
+                <li><a class="custom-color-letter" href="https://wa.me/573136762236?text=Hola%20deseo%20información" target="_blank"><i class="fab fa-whatsapp fa-fw"></i> WhatsApp</a></li>
+                <li><a class="custom-color-letter" href="https://www.instagram.com/sukhahealinghome?igsh=MmxweGEyM3l2ZG5z" target="_blank"><i class="fab fa-instagram fa-fw"></i> Instagram</a></li>
+                <li><a class="custom-color-letter" href="#"><i class="fab fa-facebook fa-fw"></i> Facebook</a></li>
+                <li><a class="custom-color-letter" href="#"><i class="fab fa-twitter fa-fw"></i> Twitter</a></li>
+                
+              </ul>
+            </div>
+
+            <div class="col-sm-6 col-md-3">
+              <h5></h5>
+              <ul class="list-unstyled">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'baselogin' %}">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
+                  </li>
+              </ul>
+            </div>
+             <!--<div class="col-sm-6 col-md-3">
+              <h5>Nosotros</h5>
+              <ul class="list-unstyled">
+                <li>Misión</li>
+                <li>Visión</li>
+                <li>Historia</li>
+              </ul>
+            </div>-->
+            
+          </div>
+
+    </div>
+  </footer>
+
   <!-- Agrega los enlaces a Bootstrap JS y cualquier otro script necesario -->
   <script src="{% static 'jquery/jquery.min.js' %}"></script>
   <script href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>

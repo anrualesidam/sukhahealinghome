@@ -27,10 +27,11 @@ main {
 
 
 footer.custom-footer {
-    background-color: rgb(17, 98, 19);
-    padding: 55px;
-    color: #ece9e9;
+    background-color: rgb(219, 223, 224);
+    padding: 0px;
+    color: #A2A300;
     font-weight: bold;
+    font-size: 18px;
     flex-shrink: 0;
 }
 
@@ -90,4 +91,47 @@ footer.custom-footer {
 .custom-color {
     background-color: #A2A300; /* Reemplaza tuColorPersonalizado con el código de color que desees */
     /* Otros estilos si es necesario */
+}
+
+.custom-color-letter {
+    color: #A2A300; /* Reemplaza tuColorPersonalizado con el código de color que desees */
+    /* Otros estilos si es necesario */
+}
+
+.social-icon {
+    width: 40%;
+    height: auto; 
+
+}
+
+.social-section {
+    margin-bottom: 20px;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 20px;
+    justify-content: center;
+}
+
+h2-color {
+    margin-bottom: 10px;
+    color: #1ABC9C;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.icon-redes{
+  color: #1ABC9C;
+  display: flex; 
+  justify-content: center;
 }
