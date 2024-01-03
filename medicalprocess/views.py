@@ -30,7 +30,7 @@ class medicalprocess:
             else:
                 # messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
                 messages.warning(
-                    request, 'Incorrect password or user name, please check! ')
+                    request, 'Contraseña o nombre de usuario incorrecto, ¡compruébelo!')
                 return render(request, 'alert_nofile.html')
 
         return render(request, 'login.html')
