@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-8h!y6ptfe&&zdd^qz8v@mo69%@j8!_$)+0t7#b%+sbuw((ile2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+AUTH_USER_MODEL = 'medicalprocess.CustomUser'
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -65,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },

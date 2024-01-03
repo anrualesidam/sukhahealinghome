@@ -135,3 +135,7 @@ h2-color {
   display: flex; 
   justify-content: center;
 }
+
+.color-login{
+  background:#1ABC9C;
+}
