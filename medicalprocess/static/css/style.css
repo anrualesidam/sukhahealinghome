@@ -139,3 +139,12 @@ h2-color {
 .color-login{
   background:#1ABC9C;
 }
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: var(--bs-dark);
+}
+.sidebar .nav-link:hover {
+  background: var(--bs-light);
+  color: var(--bs-primary);
+}

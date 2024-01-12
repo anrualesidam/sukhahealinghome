@@ -37,3 +37,12 @@ class medicalprocess:
     
     def contact(self, request):
         return render(request, "contact.html")
+    
+
+
+class Home:
+    def home(self, request):
+        return render(request, "home.html")
+    
+    def contact(self, request):
+        return render(request, "contactlogin.html")

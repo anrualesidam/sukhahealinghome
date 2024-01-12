@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="d-flex justify-content-center align-items-center containernew">
+  <h5 class="mb-3">Bienvenido, {{ request.user.username }}!</h5>
+</div>
+
+
+
+<div class="d-flex justify-content-center align-items-center">
+  {% csrf_token %}
+  <div style="  text-align: justify;
+  width: 100%; 
+  max-width: 800px; 
+  height: 800%;
+  margin:0 auto;
+  padding: 20px;">
+
+    <p style="font-size: 20px;"><strong>¿Quiénes somos?</strong></p>
+    <p style="font-size: 18px;">
+      Somos un equipo de Profesionales
+      interdisciplinario dedicado al cuidado de  pacientes postquirúrgicos. Nuestra razón  
+      de ser es tu bienestar y satisfactoria recuperación.
+      (<a href="https://netizenone.xyz/sukha/" target="_blank">Link de página principal</a>).
+      </p>
+  </div>
+</div>
+
+<div class="container text-center">
+  <div class="row align-items-start" style="background-color: #f5f5f5;">   
+   <div class="container">
+
+  <section class="section-content py-3">
+    <div class="row">
+      <aside class="col-lg-3"> 
+  <!-- ============= COMPONENT ============== -->
+        <nav class="sidebar card py-2" style="background-color: #1ABC9C;">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Busqueda pacientes</a>
+         </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> Clientes activos </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> Historico de pacientes</a>
+          </li>          
+        </ul>
+        </nav>
+  <!-- ============= COMPONENT END// ============== -->	
+      </aside>
+      <main class="col-lg-9">
+        <p style="font-size: 18px;">
+          Ingresar el número de documento o nombre completo del paciente.
+          </p>
+
+        <form class="d-flex" action="" method="GET">
+          <input class="form-control me-2" type="search" placeholder="NÚMERO DE IDENTIFICACIÓN" aria-label="Search" name="buscador">
+          <input class="form-control me-2" type="search" placeholder="NOMBRE" aria-label="Search" name="buscador">
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+      </main>
+    </div>
+  </section>
+  
+    </div><!-- container //  -->
+  
+
+
+  </div>
+
+  <div class="container text-center">
+    <div class="row align-items-start">
+      <div style="display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 20px;">
+    </div>
+    </div>
+  
+  
+  </div>
+
+
+
+
+  
+  
+  </div>
+
+  
+  
+<div class="container text-center">
+  <div class="row align-items-start">
+    <div style="display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;">
+  </div>
+  </div>
+
+
+</div>
+
+
+
+
+{% endblock %}
