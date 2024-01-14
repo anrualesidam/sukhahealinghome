@@ -9,6 +9,18 @@ from django.contrib import messages
 
 from django.shortcuts import render
 
+
+import firebase_admin
+from firebase_admin import credentials, firestore
+import os
+# Inicializar la aplicación con las credenciales descargadas
+
+url = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                   "static/keys/sukha_doctor_history.json")
+cred = credentials.Certificate(url)
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+
 class medicalprocess:
     def login(self,request):
         if request.method == 'POST':
@@ -17,7 +29,7 @@ class medicalprocess:
 
             self.password = request.POST.get('password')
 
-            print(self.username,self.password)
+            #print(self.username,self.password)
 
             user = authenticate(
                 request, username=self.username.lower(), password=self.password)
@@ -46,3 +58,21 @@ class Home:
     
     def contact(self, request):
         return render(request, "contactlogin.html")
+ 
+
+class SearchCirujano:
+
+    def search_pacientes(self,request):
+        id_numer = request.GET.get('buscadorid')
+        tipo_id = request.GET.get('opcionesid')
+        
+        key_search=str(tipo_id)+'_'+str(id_numer)
+        print(key_search)
+        def leer_documentos_coleccion(correo):
+            docs = db.collection('cirujanos').document(correo).collection("pacientes").document(key_search)
+
+            #print(docs.get().to_dict())
+            return docs.get().to_dict()
+        resultadoss=leer_documentos_coleccion('anderson.ruales@udea.edu.co')
+
+        return render(request, 'home.html', resultadoss)

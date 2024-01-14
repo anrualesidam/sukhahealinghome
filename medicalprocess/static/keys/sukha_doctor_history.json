@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sukha-doctor-history",
+  "private_key_id": "fe4a071405ca32287b4a327dc4128279dbb77def",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDeK8KMXtvMs9HJ\nKAEKgY5wbdF2vn6sZJxkTCoVZ7QIoYEFoWL2IbW4ADhtg8B0E7p+g3zGSalcJEek\nQQZu7SSzfu6KbmEUsldCRs3Fib4JoP9ASNlN2NvfB6QgUbbTMHCH/AWhrZBsbNxc\nURGrOT0Sqkldj3h9psRGS2gCGhV4DGA3JIQUyxJvb6JCY7LVOPnUU6WltqGio8xi\nOIH3WY1DyoLBZ9m7rvg8JKtCOmeMnyqqBd50iQ5vyU2CFhxjvgdHNyfMvW1sRPN5\nk3thYozYmf6O8ITi8ZcT7ji/S1n45M3QwW8pwGfW7os5y8wZpt8wgLUDxsO5FpUU\nd602eMqbAgMBAAECggEAB5Hwec2gFKit4jMqeQarojKDu6rj4i1SxcBVEMH7VSbX\noItuQ/bSMZD9Psde3TWpUu/nrW6gxmY+SZD6wDFmtj0B6ofvSwATFr2IifEr9KtC\nE7WdEzxdOuC7Kd2kP/NfFOP7hVzxOebGkPUlFgikauweWtbRBrWulhAjzri/zfc+\nLY/jrA6eU7ctt3PUhQzSbTARAZMxbWMaYolHEKb5Qhuil2vhzy9lgUw9yOIAt0Xn\nZtnlQxs5wXMr4MkIzUOVFA4Bhxb9RsNsQk6d+P8qQzdWAeTqhVbNzIzN+xKJNtpw\nYesa7JuSp9hTyQnsB/3jPxVr9f17o6FM8ApeifPyOQKBgQDxj0dMIZtBEguJKtw3\neEe1ZQjkLbgFhp2nqYsHRFDXHoxZiKSwfrpu8g77y2RURD5S/1ABL9Jm0NUIVyVU\nWQXcZSVJGn8cs6iWHfn9DMqLYOgt5xawEGki0u7AXqLl46f4dGViG6ivtgroCRTQ\nAuhmiBWDhCWRi7qQHC8h/cHYKQKBgQDrc8PHk3DdTnfJLaswfZubjFKPmkzljasH\npngj9LZsE/T8AIcMyWLYBOpFg+Q3P5gxrox0Ai9RUHI0PnivUlUak1pGgw3Mm0JJ\nOYOxPLapX4NcGlq0Pc5mtg3CNTNkH1CZ4n9aYAx0SHfDqw7ELeksXhSFAW9yL1c6\ng0Nmv3H1IwKBgAS4uTsKuR8nfCQ9Ozq2Vih8hhT3s84f2HsLfFUzB6V8yl+BpT5x\n67D5eEOBsT9YaiNzLBwp1CIAWPmlwmwIpW2uaHEqXGuyM0xj35wLoPXiegdTqgTc\n/UEaAGKwNtzpe0IG/GhThBOTKllovAho1iQS6uC8N4PFyGrCskUm0aApAoGAPBZW\nD1ekRQYicbfy6TQVAxRDeZxiJW8LB6/HFz37VAefzLQBwxSd4g0XEFiBZEwZdgxa\nkbyBANpr2sNanzt+toKGVlpZqi6xMui3oAKjhwP2DQo4vajMRNAPINHc5J9NPYhd\nAd5jL0XTMp8z7ILe79Cuoebk3xoPw8H98HnJBksCgYEAo+pozzyBaAx+BUaA+tzU\nZeeWcaA9BIYywGHZxJv1YDrDPRW+pRb6XwKFptrOVIFZPFsTAy+tmNAMqWWlnCCI\nT7XFl5X+IQypLhOa7LGA+a2AX59XF97FE0rja1KFf8IAzv+DBpm8Q9cPX5stQHXQ\nrKsnoaKJasOfYF1OxXv8Pjs=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-m072o@sukha-doctor-history.iam.gserviceaccount.com",
+  "client_id": "104385531025247580731",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-m072o%40sukha-doctor-history.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
