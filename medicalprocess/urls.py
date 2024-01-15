@@ -8,7 +8,9 @@ urlpatterns = [
     path('homecirujano/', Home().homecirujano, name='homecirujano'),
     path('homeadministrador/', Home().homeadministrador, name='homeadministrador'),
     path('homeenfermera/', Home().homeenfermera, name='homeenfermera'),
-    path('contactlogin/', Home().contact, name='contactlogin'),
+    path('contactlogincirujano/', Home().contactlogincirujano, name='contactlogincorujano'),
+    path('contactloginenfermera/', Home().contactloginenfermera, name='contactloginenfermera'),
+    path('contactloginandminstrador/', Home().contactloginadministrador, name='contactloginandminstrador'),
     #path('search/', SearchCirujano().search_pacientes, name='search'),
     
 ]

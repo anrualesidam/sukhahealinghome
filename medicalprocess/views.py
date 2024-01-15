@@ -94,7 +94,7 @@ class Home:
         
     def buscar_usuario_admin(self,key):
         correokey=db.collection('pacientes').document(key).get().to_dict()["correo"]
-        print("urldoc",correokey)
+        #print("urldoc",correokey)
         docs = db.collection('cirujanos').document(correokey).collection("pacientes").document(key)
         return docs.get().to_dict()
 
@@ -109,11 +109,10 @@ class Home:
 
 
         key_search=str(tipo_id)+'_'+str(id_numer)
-        print("testt",key_search,correouser)
-        #try:
+        #print("testt",key_search,correouser)
         
         try:
-            resultadoss=self.leer_documentos_coleccion(correouser,key_search)
+            resultadoss=self.leer_documentos_coleccion(correouser,key_search)            
             resultadoss['tipo_usuario_completo']=tipousercompleto
         except:
             resultadoss={"tipo_usuario_completo":"MÉDICO CIRUJANO"}#['tipo_usuario_completo']="MÉDICO CIRUJANO"
@@ -131,7 +130,7 @@ class Home:
         key_search=str(tipo_id)+'_'+str(id_numer)
 
         #print(key_search,tipousercompleto)
-
+        
         try:
             resultadoss=self.buscar_usuario_admin(key_search)
             resultadoss['tipo_usuario_completo']=tipousercompleto
@@ -159,8 +158,14 @@ class Home:
         return render(request, 'homeadministrador.html', resultadoss)
 
 
-    def contact(self, request):
-        return render(request, "contactlogin.html")
+    def contactlogincirujano(self, request):
+        return render(request, "contactlogincirujano.html")
+    
+    def contactloginenfermera(self, request):
+        return render(request, "contactloginenfermera.html")
+    
+    def contactloginadministrador(self, request):
+        return render(request, "contactloadministrador.html")
  
 """
 class SearchCirujano:

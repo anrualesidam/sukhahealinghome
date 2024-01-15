@@ -5,7 +5,10 @@
 
 {% block baroption %}
 <li class="nav-item">
-  <a class="nav-link" href="{% url 'homecirujano' %}">Inicio</a>
+  <a class="nav-link" href="{% url 'homeenfermera' %}">Inicio</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'contactloginenfermera' %}">Contacto</a>
 </li>
 {% endblock %} 
 
@@ -101,6 +104,9 @@
 {% block baroptionpies %}
 
 <li class="nav-item">
-  <a class="nav-link" href="{% url 'homecirujano' %}">Inicio</a>
+  <a class="nav-link" href="{% url 'homeenfermera' %}">Inicio</a>
+</li>
+<li style="color: #1ABC9C;" class="nav-item">
+  <a class="nav-link" href="{% url 'contactloginenfermera' %}">Contacto</a>
 </li>
 {% endblock %}
