@@ -139,7 +139,7 @@ class SearchCirujano:
 
         else:
             messages.warning(
-            request, 'Seleccionar tipo de usuario')
+            request, 'Ingresar Nuevamente')
             return render(request, 'alert_nofile.html')
 
         
