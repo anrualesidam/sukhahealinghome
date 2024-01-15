@@ -8,6 +8,8 @@ class CustomUser(AbstractUser):
     # tus campos personalizados aquí
 
     # Agrega related_name a la relación de permisos de usuario
+    tipo_user = models.CharField(max_length=255)
+    
     user_permissions = models.ManyToManyField(
         Permission,
         verbose_name=('user permissions'),

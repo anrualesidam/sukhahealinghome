@@ -29,3 +29,10 @@ verifica creación de proyecto
 Creación del módulo o aplicación "medicalprocess"
 
 1. python manage.py startapp medicalprocess
+
+
+
+--HACER MIGRACION CON NUEVOS MODELO DE DATOS
+
+python manage.py makemigrations nombre_de_tu_aplicacion
+python manage.py migrate medicalprocess

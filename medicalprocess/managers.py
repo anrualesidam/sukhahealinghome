@@ -2,10 +2,10 @@ from django.contrib.auth.models import BaseUserManager
 
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, username, password=None, user_id=None,**extra_fields):
+    def create_user(self, username, password=None,tipo_user=None, user_id=None,**extra_fields):
         if not username:
             raise ValueError("El campo de nombre de usuario debe estar configurado")
-        user = self.model(id=user_id,username=username, **extra_fields)
+        user = self.model(id=user_id,username=username, tipo_user=tipo_user,**extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user

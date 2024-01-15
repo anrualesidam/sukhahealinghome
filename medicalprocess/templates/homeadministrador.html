@@ -2,6 +2,13 @@
 {% load static %}
 
 
+{% block baroption %}
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'homeadministrador' %}">Inicio</a>
+</li>
+{% endblock %} 
+
+
 {% block content %}
 
 
@@ -9,6 +16,9 @@
   <h5 class="mb-3">Bienvenido, {{ request.user.username }}!</h5>
 </div>
 
+<div class="d-flex justify-content-center align-items-center containernew">
+  <h5 class="mb-3">Perfil: {{ tipo_usuario_completo}}!</h5>
+</div>
 
 
 <div class="d-flex justify-content-center align-items-center">
@@ -41,13 +51,21 @@
         <nav class="sidebar card py-2" style="background-color: #1ABC9C;">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Busqueda pacientes</a>
+            <a class="nav-link" href="{% url 'homeadministrador' %}">Busqueda pacientes</a>
          </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> Clientes activos </a>
+            <a class="nav-link" href="#"> Ingresar paciente  </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"> Ingresar Cirujano  </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"> Ingresar Enfermera  </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> Historico de pacientes</a>
+            <a class="nav-link" href="#">Tu perfil</a>
           </li>          
         </ul>
         </nav>
@@ -251,4 +269,11 @@
 
 
 
+{% endblock %}
+
+{% block baroptionpies %}
+
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'homeadministrador' %}">Inicio</a>
+</li>
 {% endblock %}

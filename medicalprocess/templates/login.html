@@ -32,6 +32,18 @@
           <label for="password" style="color: #ffffff;">Contraseña:</label>
           <input type="password" class="form-control" name="password" required>
       </div>
+
+      <div class="form-group">
+        <label for="password" style="color: #ffffff;">Tipo usuario:</label>
+        <select class="form-select me-2" aria-label="Seleccione Tipo usuario..." name="opcionesid">
+          <option value="" selected>Seleccione Tipo usuario...</option>
+          <option value="MECI">MÉDICO CIRUJANO</option>
+          <option value="ENFER">ENFERMERA/O</option>
+          <option value="ADMIN">ADMINISTRADOR</option>
+          <!-- Agrega más opciones según sea necesario -->
+        </select>
+    </div>
+      
       <div style="height: 20px;"></div> 
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
