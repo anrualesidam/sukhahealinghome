@@ -130,16 +130,21 @@ class SearchCirujano:
             resultadoss['tipo_usuario_completo']=tipousercompleto
             return render(request, 'homecirujano.html', resultadoss)
         
-        if tipouser=="ENFER":
+        elif  tipouser=="ENFER":
             resultadoss=buscar_usuario_admin(key_search)
             resultadoss['tipo_usuario_completo']=tipousercompleto
             return render(request, 'homeenfermera.html', resultadoss)
         
-        if tipouser=="ADMIN":
+        elif tipouser=="ADMIN":
             #print("ADMIN")
             resultadoss=buscar_usuario_admin(key_search)
             resultadoss['tipo_usuario_completo']=tipousercompleto
             return render(request, 'homeadministrador.html', resultadoss)
+
+        else:
+            messages.warning(
+            request, 'Seleccionar tipo de usuario')
+            return render(request, 'alert_nofile.html')
 
         #buscar_usuario_admin(key_search)
         
