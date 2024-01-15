@@ -102,8 +102,15 @@ class Home:
 
 
         key_search=str(tipo_id)+'_'+str(id_numer)
-        resultadoss=self.leer_documentos_coleccion(correouser,key_search)
-        resultadoss['tipo_usuario_completo']=tipousercompleto
+        #try:
+        
+        try:
+            resultadoss=self.leer_documentos_coleccion(correouser,key_search)
+            resultadoss['tipo_usuario_completo']=tipousercompleto
+        except:
+            resultadoss={"tipo_usuario_completo":"MÉDICO CIRUJANO"}#['tipo_usuario_completo']="MÉDICO CIRUJANO"
+            
+
         return render(request, 'homecirujano.html', resultadoss)
 
     
@@ -115,10 +122,15 @@ class Home:
         
         key_search=str(tipo_id)+'_'+str(id_numer)
 
-        print(key_search,tipousercompleto)
+        #print(key_search,tipousercompleto)
 
-        resultadoss=self.buscar_usuario_admin(key_search)
-        resultadoss['tipo_usuario_completo']=tipousercompleto
+        try:
+            resultadoss=self.buscar_usuario_admin(key_search)
+            resultadoss['tipo_usuario_completo']=tipousercompleto
+        except:
+            resultadoss={'tipo_usuario_completo':"ENFERMERA/O"}
+
+        
         return render(request, 'homeenfermera.html', resultadoss)
 
     
@@ -131,11 +143,14 @@ class Home:
         
         key_search=str(tipo_id)+'_'+str(id_numer)
 
-        resultadoss=self.buscar_usuario_admin(key_search)
-        resultadoss['tipo_usuario_completo']=tipousercompleto
+        try:
+            resultadoss=self.buscar_usuario_admin(key_search)
+            resultadoss['tipo_usuario_completo']=tipousercompleto
+        except:
+            resultadoss={'tipo_usuario_completo':"ADMINISTRADOR/A"}
         return render(request, 'homeadministrador.html', resultadoss)
 
-    
+
     def contact(self, request):
         return render(request, "contactlogin.html")
  
