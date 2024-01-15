@@ -1,6 +1,6 @@
 # mi_aplicacion/urls.py
 from django.urls import path
-from .views import medicalprocess,Home,SearchCirujano
+from .views import medicalprocess,Home
 
 urlpatterns = [
     path('', medicalprocess().login, name='baselogin'),
@@ -9,6 +9,6 @@ urlpatterns = [
     path('homeadministrador/', Home().homeadministrador, name='homeadministrador'),
     path('homeenfermera/', Home().homeenfermera, name='homeenfermera'),
     path('contactlogin/', Home().contact, name='contactlogin'),
-    path('search/', SearchCirujano().search_pacientes, name='search'),
+    #path('search/', SearchCirujano().search_pacientes, name='search'),
     
 ]

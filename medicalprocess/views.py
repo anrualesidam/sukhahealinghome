@@ -80,22 +80,66 @@ class medicalprocess:
 
 
 class Home:
+
+    def leer_documentos_coleccion(self,correo,key_search):
+            docs = db.collection('cirujanos').document(correo).collection("pacientes").document(key_search)
+            return docs.get().to_dict()
+        
+    def buscar_usuario_admin(self,key):
+        correokey=db.collection('pacientes').document(key).get().to_dict()["correo"]
+        print("urldoc",correokey)
+        docs = db.collection('cirujanos').document(correokey).collection("pacientes").document(key)
+        return docs.get().to_dict()
+
+    
+    # BUSCARDORES DE USUARIOS
+
     def homecirujano(self, request):
-        context = {'tipo_usuario_completo':request.session.get('tipousercompleto')}
-        return render(request, "homecirujano.html",context)
+        id_numer = request.GET.get('buscadorid')
+        tipo_id = request.GET.get('opcionesid')
+        correouser =request.session.get('correo')
+        tipousercompleto=request.session.get('tipousercompleto')
+
+
+        key_search=str(tipo_id)+'_'+str(id_numer)
+        resultadoss=self.leer_documentos_coleccion(correouser,key_search)
+        resultadoss['tipo_usuario_completo']=tipousercompleto
+        return render(request, 'homecirujano.html', resultadoss)
+
     
     def homeenfermera(self, request):
-        context = {'tipo_usuario_completo':request.session.get('tipousercompleto')}
-        return render(request, "homeenfermera.html",context)
+
+        id_numer = request.GET.get('buscadorid')
+        tipo_id = request.GET.get('opcionesid')
+        tipousercompleto=request.session.get('tipousercompleto')
+        
+        key_search=str(tipo_id)+'_'+str(id_numer)
+
+        print(key_search,tipousercompleto)
+
+        resultadoss=self.buscar_usuario_admin(key_search)
+        resultadoss['tipo_usuario_completo']=tipousercompleto
+        return render(request, 'homeenfermera.html', resultadoss)
+
     
     def homeadministrador(self, request):
-        context = {'tipo_usuario_completo':request.session.get('tipousercompleto')}
-        return render(request, "homeadministrador.html",context)
+
+        id_numer = request.GET.get('buscadorid')
+        tipo_id = request.GET.get('opcionesid')
+
+        tipousercompleto=request.session.get('tipousercompleto')
+        
+        key_search=str(tipo_id)+'_'+str(id_numer)
+
+        resultadoss=self.buscar_usuario_admin(key_search)
+        resultadoss['tipo_usuario_completo']=tipousercompleto
+        return render(request, 'homeadministrador.html', resultadoss)
+
     
     def contact(self, request):
         return render(request, "contactlogin.html")
  
-
+"""
 class SearchCirujano:
 
     def search_pacientes(self,request):
@@ -144,4 +188,4 @@ class SearchCirujano:
 
         
 
-        
+        """
