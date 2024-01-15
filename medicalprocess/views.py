@@ -39,9 +39,7 @@ class medicalprocess:
                 request, username=self.username.lower(), password=self.password)
 
             context = {'contenido': self.username.lower(),'tipo_usuario_completo':tipos_de_usuarios[self.tipo_user]}
-            request.session['correo'] = self.username.lower()
-            request.session['tipouser'] =self.tipo_user
-            request.session['tipousercompleto'] = tipos_de_usuarios[self.tipo_user]
+            
 
             if self.user is not None:
 
@@ -58,12 +56,21 @@ class medicalprocess:
                 login(request, self.user)
 
                 if self.user.tipo_user=="MECI":
+                    request.session['correo'] = self.username.lower()
+                    request.session['tipouser'] =self.tipo_user
+                    request.session['tipousercompleto'] = tipos_de_usuarios[self.tipo_user]
                     return render(request, 'homecirujano.html', context)
 
                 elif self.user.tipo_user=="ENFER":
+                    request.session['correo'] = self.username.lower()
+                    request.session['tipouser'] =self.tipo_user
+                    request.session['tipousercompleto'] = tipos_de_usuarios[self.tipo_user]
                     return render(request, 'homeenfermera.html', context)
                 
                 elif self.user.tipo_user=="ADMIN":
+                    request.session['correo'] = self.username.lower()
+                    request.session['tipouser'] =self.tipo_user
+                    request.session['tipousercompleto'] = tipos_de_usuarios[self.tipo_user]
                     return render(request, 'homeadministrador.html', context)               
 
             else:
@@ -102,6 +109,7 @@ class Home:
 
 
         key_search=str(tipo_id)+'_'+str(id_numer)
+        print("testt",key_search,correouser)
         #try:
         
         try:
