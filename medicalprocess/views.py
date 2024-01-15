@@ -66,10 +66,6 @@ class medicalprocess:
                 elif self.user.tipo_user=="ADMIN":
                     return render(request, 'homeadministrador.html', context)               
 
-                
-
-                #return render(request, 'home.html', context)
-            
             else:
                 # messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
                 messages.warning(
@@ -146,7 +142,6 @@ class SearchCirujano:
             request, 'Seleccionar tipo de usuario')
             return render(request, 'alert_nofile.html')
 
-        #buscar_usuario_admin(key_search)
         
 
         
