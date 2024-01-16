@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 # Create your views here.
 
+from django.http import JsonResponse
+
 
 from django.shortcuts import render
 
@@ -166,7 +168,83 @@ class Home:
     
     def contactloginadministrador(self, request):
         return render(request, "contactloadministrador.html")
- 
+
+class ingresarinformacion:
+
+    def ingresarcirujano(self,request):
+        
+        nombre = str(request.GET.get('nombre')).upper()
+        apellido = str(request.GET.get('apellido')).upper()
+
+        especialidad = str(request.GET.get('especialidad')).upper()
+        ciudad = str(request.GET.get('ciudad')).upper()
+
+        direccion = str(request.GET.get('direccion')).upper()
+        consultorio = str(request.GET.get('consultorio')).upper()
+
+        celular = str(request.GET.get('celular')).upper()
+        correo = str(request.GET.get('correo')).upper()
+
+
+        # Define la referencia del documento con la cédula como identificador
+        print(correo)
+        if correo != "NONE":
+                doc_ref = db.collection('cirujanoinfo').document(correo)
+
+                # Agrega los datos al documento
+                doc_ref.set({
+                            'nombre':nombre,
+                            'apellido':apellido,
+                            "especialidad":especialidad,
+                            'ciudad':ciudad,
+                            'direccion':direccion,
+                            'consultorio':consultorio,
+                            'celular':celular,
+                            'correo':correo
+                            })
+                messages.warning(
+                request, 'Ingresado el cirujano {}'.format(nombre+" "+ apellido))
+                return render(request, 'alert_nofile_ingreso.html')
+        else:
+            return render(request, 'ingresarcirujano.html')
+
+    def ingresarpacientes(self,request):
+        
+        nombre = str(request.GET.get('nombre')).upper()
+        apellido = str(request.GET.get('apellido')).upper()
+
+        especialidad = str(request.GET.get('especialidad')).upper()
+        ciudad = str(request.GET.get('ciudad')).upper()
+
+        direccion = str(request.GET.get('direccion')).upper()
+        consultorio = str(request.GET.get('consultorio')).upper()
+
+        celular = str(request.GET.get('celular')).upper()
+        correo = str(request.GET.get('correo')).upper()
+
+
+        # Define la referencia del documento con la cédula como identificador
+        print(correo)
+        if correo != "NONE":
+                doc_ref = db.collection('cirujanoinfo').document(correo)
+
+                # Agrega los datos al documento
+                doc_ref.set({
+                            'nombre':nombre,
+                            'apellido':apellido,
+                            "especialidad":especialidad,
+                            'ciudad':ciudad,
+                            'direccion':direccion,
+                            'consultorio':consultorio,
+                            'celular':celular,
+                            'correo':correo
+                            })
+                messages.warning(
+                request, 'Ingresado el cirujano {}'.format(nombre+" "+ apellido))
+                return render(request, 'alert_nofile_ingreso.html')
+        else:
+            return render(request, 'ingresarpacientes.html')
+
 """
 class SearchCirujano:
 
