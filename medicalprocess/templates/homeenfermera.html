@@ -71,7 +71,7 @@
           </p>
 
         <form class="d-flex" action="{% url 'homeenfermera' %}" method="GET">
-          <select class="form-select me-2" aria-label="SELECCIONE TIPO ID..." name="opcionesid">
+          <select class="form-select me-2" aria-label="SELECCIONE TIPO ID..." name="opcionesid" required>
             <option value="" selected>SELECCIONE TIPO ID...</option>
             <option value="CC">CÉDULA DE CIUDADANÍA</option>
             <option value="PST">PASAPORTE</option>
@@ -82,7 +82,7 @@
             <option value="DNI">DOCUMENTO NACIONAL DE IDENTIDAD</option>
             <!-- Agrega más opciones según sea necesario -->
           </select>
-          <input class="form-control me-2" type="search" placeholder="NÚMERO DE IDENTIFICACIÓN" aria-label="Search" name="buscadorid">
+          <input class="form-control me-2" type="search" placeholder="NÚMERO DE IDENTIFICACIÓN" aria-label="Search" name="buscadorid" required>
     
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
