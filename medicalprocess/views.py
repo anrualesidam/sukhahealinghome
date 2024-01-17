@@ -91,14 +91,21 @@ class medicalprocess:
 class Home:
 
     def leer_documentos_coleccion(self,correo,key_search):
-            docs = db.collection('cirujanos').document(correo).collection("pacientes").document(key_search)
-            return docs.get().to_dict()
+        docs = db.collection('cirujanos').document(correo).collection("pacientes").document(key_search)
+        return docs.get().to_dict()
         
     def buscar_usuario_admin(self,key):
-        correokey=db.collection('pacientes').document(key).get().to_dict()["correo"]
-        #print("urldoc",correokey)
+        
+        correokey=db.collection('pacientes').document(key).collection("info_paciente").document("paciente").get().to_dict()["correo_cir"]
+        #db.collection('pacientes').document(key).get().to_dict()["correo"]
+        print("urldoc",correokey)
         docs = db.collection('cirujanos').document(correokey).collection("pacientes").document(key)
         return docs.get().to_dict()
+
+    def buscar_responsable_usuario(self,key):
+        
+        responsabledicc=db.collection('pacientes').document(key).collection("info_paciente").document("responsable")
+        return responsabledicc.get().to_dict()
 
     
     # BUSCARDORES DE USUARIOS
@@ -106,15 +113,19 @@ class Home:
     def homecirujano(self, request):
         id_numer = request.GET.get('buscadorid')
         tipo_id = request.GET.get('opcionesid')
+
         correouser =request.session.get('correo')
         tipousercompleto=request.session.get('tipousercompleto')
 
 
         key_search=str(tipo_id)+'_'+str(id_numer)
-        #print("testt",key_search,correouser)
+        print("testt",key_search,correouser)
         
         try:
-            resultadoss=self.leer_documentos_coleccion(correouser,key_search)            
+            resultadosdatosusuario=self.buscar_usuario_admin(key_search)
+            resultadosresponsable=self.buscar_responsable_usuario(key_search)
+
+            resultadoss = {**resultadosdatosusuario, **resultadosresponsable}           
             resultadoss['tipo_usuario_completo']=tipousercompleto
         except:
             resultadoss={"tipo_usuario_completo":"MÉDICO CIRUJANO"}#['tipo_usuario_completo']="MÉDICO CIRUJANO"
@@ -134,7 +145,10 @@ class Home:
         #print(key_search,tipousercompleto)
         
         try:
-            resultadoss=self.buscar_usuario_admin(key_search)
+            resultadosdatosusuario=self.buscar_usuario_admin(key_search)
+            resultadosresponsable=self.buscar_responsable_usuario(key_search)
+
+            resultadoss = {**resultadosdatosusuario, **resultadosresponsable}
             resultadoss['tipo_usuario_completo']=tipousercompleto
         except:
             resultadoss={'tipo_usuario_completo':"ENFERMERA/O"}
@@ -152,11 +166,19 @@ class Home:
         
         key_search=str(tipo_id)+'_'+str(id_numer)
 
+        print(key_search,tipousercompleto)
+
         try:
-            resultadoss=self.buscar_usuario_admin(key_search)
+            resultadosdatosusuario=self.buscar_usuario_admin(key_search)
+            resultadosresponsable=self.buscar_responsable_usuario(key_search)
+
+            resultadoss = {**resultadosdatosusuario, **resultadosresponsable}
+            
             resultadoss['tipo_usuario_completo']=tipousercompleto
         except:
             resultadoss={'tipo_usuario_completo':"ADMINISTRADOR/A"}
+
+        print("resultados",resultadoss)
         return render(request, 'homeadministrador.html', resultadoss)
 
 
@@ -209,38 +231,109 @@ class ingresarinformacion:
             return render(request, 'ingresarcirujano.html')
 
     def ingresarpacientes(self,request):
+
+        tipodoc=str(request.GET.get('opcionesid')).upper()
+        estadopaciente= str(request.GET.get('opcionestado')).upper()
+
+        numdoc=str(request.GET.get('numdoc')).upper()
+        pais= str(request.GET.get('pais')).upper()
+
+        nombre=str(request.GET.get('nombre')).upper()
+        edad= str(request.GET.get('edad')).upper()
         
-        nombre = str(request.GET.get('nombre')).upper()
+        
         apellido = str(request.GET.get('apellido')).upper()
+        fechadenacimiento = request.GET.get('fechanacimiento')
 
-        especialidad = str(request.GET.get('especialidad')).upper()
-        ciudad = str(request.GET.get('ciudad')).upper()
+        correopaciente = str(request.GET.get('correopaciente')).upper()
+        lugarnacimiento = str(request.GET.get('lugarnacimiento')).upper()
 
-        direccion = str(request.GET.get('direccion')).upper()
-        consultorio = str(request.GET.get('consultorio')).upper()
+        celularpaciente = str(request.GET.get('celularpaciente')).upper()
+        ciudaddenacimiento = str(request.GET.get('ciudaddenacimiento')).upper()
 
-        celular = str(request.GET.get('celular')).upper()
-        correo = str(request.GET.get('correo')).upper()
+        cirujano = str(request.GET.get('cirujano')).upper()
+        correocirujano = str(request.GET.get('correocirujano')).upper()
 
 
         # Define la referencia del documento con la cédula como identificador
-        print(correo)
-        if correo != "NONE":
-                doc_ref = db.collection('cirujanoinfo').document(correo)
+        print(fechadenacimiento,nombre,apellido)
+        
+
+        # Responsable
+
+        retipodoc=str(request.GET.get('reopcionesid')).upper()
+        renumdoc=str(request.GET.get('renumdoc')).upper()
+
+        renombre=str(request.GET.get('renombre')).upper()
+        reapellido = str(request.GET.get('reapellido')).upper()
+
+        recelular = str(request.GET.get('recelular')).upper()
+        reparentesco = str(request.GET.get('reparentesco')).upper()
+
+        reciudad = str(request.GET.get('reciudad')).upper()
+        recorreo = str(request.GET.get('recorreo')).upper()
+
+
+
+
+        if correocirujano != "NONE":
+                
+                # DATOS DE PACIENTES
+                doc_ref = db.collection('pacientes').document(str(tipodoc)+"_"+str(numdoc)).collection("info_paciente").document("paciente")
 
                 # Agrega los datos al documento
-                doc_ref.set({
+                doc_ref.set({'tipo_doc':tipodoc,
+                            'num_id':numdoc,
                             'nombre':nombre,
                             'apellido':apellido,
-                            "especialidad":especialidad,
-                            'ciudad':ciudad,
-                            'direccion':direccion,
-                            'consultorio':consultorio,
-                            'celular':celular,
-                            'correo':correo
-                            })
+                            'correo':correopaciente,
+                            'cirujano':cirujano,
+                            'correo_cir':correocirujano,
+                            'estado':estadopaciente,
+                            'pais':pais,
+                            'ciudad_de_nacimiento':ciudaddenacimiento,
+                            'edad':edad,
+                            'fecha_nacimiento':fechadenacimiento,
+                            'lugar_nacimiento':lugarnacimiento,
+                            'celular':celularpaciente})
+                
+                # RESPONSABLE DE PACIENTE
+                doc_responsable = db.collection('pacientes').document(str(tipodoc)+"_"+str(numdoc)).collection("info_paciente").document("responsable")
+
+                # Agrega los datos al documento
+                doc_responsable.set({'retipo_doc':retipodoc,
+                            'renum_id':renumdoc,
+                            'renombre':renombre,
+                            'reapellido':reapellido,
+                            'reparentesco':reparentesco,
+                            'recelular':recelular,
+                            'recorreo':reciudad,
+                            'reciudad':recorreo})
+                
+
+                #PACIENTES A CIRUJANOS
+
+                doc_ref_p_a_c= db.collection('cirujanos').document(correocirujano).collection("pacientes").document(str(tipodoc)+"_"+str(numdoc))
+                
+                doc_ref_p_a_c.set({'tipo_doc':tipodoc,
+                 'num_id':numdoc,
+                 'nombre':nombre,
+                 'apellido':apellido,
+                 'correo':correopaciente,
+                 'cirujano':cirujano,
+                 'correo_cir':correocirujano,
+                 'estado':estadopaciente,
+                 'pais':pais,
+                 'edad':edad,
+                 'fecha_nacimiento':fechadenacimiento,
+                 'lugar_nacimiento':lugarnacimiento,
+                 'celular':celularpaciente,
+                 'celular_cirujano':db.collection('cirujanoinfo').document(correocirujano).get().to_dict()["celular"],
+                 })
+                
+                
                 messages.warning(
-                request, 'Ingresado el cirujano {}'.format(nombre+" "+ apellido))
+                request, 'Ingresado el paciente {}'.format(nombre+" "+ apellido))
                 return render(request, 'alert_nofile_ingreso.html')
         else:
             return render(request, 'ingresarpacientes.html')

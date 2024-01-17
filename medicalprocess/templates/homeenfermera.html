@@ -215,6 +215,84 @@
 
           <h2>Información del responsable</h2>
 
+          <div style="display: flex;">
+            <div style="flex: 1;">
+                <table>
+
+                    <th class="h6" style="text-align: left;">Tipo Doc: </th>
+                    <tr>
+                        {% if retipo_doc %}
+                        <td class="form-control me-2 text-xl-left" style="text-align: left;">{{ retipo_doc }}</td>
+                        {% endif %}
+                    </tr>
+                 
+                    <th class="h6" style="text-align: left;">Nombre: </th>
+                    <tr>
+                      {% if renombre %}
+                      <td class="form-control me-2 text-xl-left" style="text-align: left;">{{ renombre }}</td>
+                      {% endif %}
+                    </tr>
+
+                  <th class="h6" style="text-align: left;">Celular paciente: </th>
+                  <tr>
+                      {% if recelular %}                    
+                      <td class="form-control me-2 text-xl-left" style="text-align: left;">{{ recelular }}</td>
+                      {% endif %}
+                  </tr>
+
+                  <th class="h6" style="text-align: left;">Ciudad: </th>
+                  <tr>
+                      {% if reciudad %}
+                    
+                      <td class="form-control me-2 text-xl-left" style="text-align: left;">{{ reciudad }}</td>
+                      {% endif %}
+                  </tr>
+
+
+                </table>
+            </div>
+        
+            <div style="flex: 1;">
+                <table>
+                  <th class="h6" style="text-align: left;">Num doc:</th>
+                  <tr>
+                      {% if renum_id %}
+                    
+                      <td class="form-control me-2 text-xl-left" style="text-align: left;">{{ renum_id }}</td>
+                      {% endif %}
+                  </tr>
+
+                  <th class="h6" style="text-align: left;">Apellido: </th>
+                  <tr>
+                      {% if reapellido %}
+                    
+                      <td class="form-control me-2 text-xl-left" style="text-align: left;">{{ reapellido }}</td>
+                      {% endif %}
+                  </tr>
+
+                  <th class="h6" style="text-align: left;">Parentesco: </th>
+                  <tr>
+                      {% if reparentesco %}
+                    
+                      <td class="form-control me-2 text-xl-left" style="text-align: left;">{{ reparentesco }}</td>
+                      {% endif %}
+                  </tr>
+
+                  <th class="h6" style="text-align: left;">Correo: </th>
+                  <tr>
+                      {% if recorreo %}
+                    
+                      <td class="form-control me-2 text-xl-left" style="text-align: left;">{{ recorreo }}</td>
+                      {% endif %}
+                  </tr>     
+
+                  
+                    
+                    
+                </table>
+            </div>
+          </div>
+
         {% endif %}
       
       </main>

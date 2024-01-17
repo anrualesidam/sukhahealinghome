@@ -82,43 +82,154 @@
         
         <div class="row">
             
-        
+            <div class="row mt-3">
+                <div class="col-md-6" style="text-align: left;">
+                  <label  style="text-align: left; font-weight: bold;">Tipo Doc:</label>         
+                  <select class="form-select me-2" aria-label="SELECCIONE TIPO ID..." name="opcionesid" required>
+                    <option value="" selected>SELECCIONE TIPO ID...</option>
+                    <option value="CC">CÉDULA DE CIUDADANÍA</option>
+                    <option value="PST">PASAPORTE</option>
+                    <option value="CE">CÉDULA EXTRANJERA</option>
+                    <option value="CEC">CÉDULA DE EXTRANJERÍA COLOMBIANA</option>
+                    <option value="RC">REGISTRO CIVIL</option>
+                    <option value="CI">CARNET DE IDENTIDAD</option>
+                    <option value="DNI">DOCUMENTO NACIONAL DE IDENTIDAD</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                  </select>
+                </div>
+                <div class="col-md-6"style="text-align: left;">
+                  <label  style="text-align: left; font-weight: bold;">Estado del paciente:</label>     
+                  <select class="form-select me-2" aria-label="SELECCIONE TIPO ID..." name="opcionestado" required>
+                    <option value="" selected>ESTADO...</option>
+                    <option value="ACTIVO">ACTIVO</option>
+                    <option value="INACTIVO">INACTIVO</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                  </select>        
+                </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-6"style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Num doc:</label>       
+                <input class="form-control me-2" type="search" placeholder="NÚMERO DOC" aria-label="Search" name="numdoc" required>
+              </div>
+              <div class="col-md-6"style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Pais residencia:</label> 
+                  <input class="form-control me-2" type="search" placeholder="PAIS DE RESIDENCIA" aria-label="Search" name="pais" value="">        
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-6"style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Nombre(s):</label>          
+                <input class="form-control me-2" type="search" placeholder="NOMBRE(S)" aria-label="Search" name="nombre" required>
+              </div>
+              <div class="col-md-6"style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Edad:</label>   
+                  <input class="form-control me-2" type="search" placeholder="EDAD" aria-label="Search" name="edad">        
+              </div>
+            </div>
         
             <div class="row mt-3">
-                <div class="col-md-6">            
-                    <input class="form-control me-2" type="search" placeholder="NOMBRE(S)" aria-label="Search" name="nombre">
+                <div class="col-md-6" style="text-align: left;">
+                  <label  style="text-align: left; font-weight: bold;">Apellido:</label>       
+                  <input class="form-control me-2" type="search" placeholder="APELLIDO(S)" aria-label="Search" name="apellido" required>
                 </div>
-                <div class="col-md-6">     
-                    <input class="form-control me-2" type="search" placeholder="APELLIDO(S)" aria-label="Search" name="apellido">        
+                <div class="col-md-6" style="text-align: left;">
+                  <label  style="text-align: left; font-weight: bold;">Fecha de nacimiento:</label>
+                  <input class="form-control me-2" type="date" placeholder="FECHA DE NACIMIENTO" name="fechanacimiento" required>        
                 </div>
             </div>
             
             <div class="row mt-3">            
-              <div class="col-md-6">                  
-                <input class="form-control me-2" type="search" placeholder="ESPECIALIDAD" aria-label="Search" name="especialidad">                  
+              <div class="col-md-6"style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Correo paciente:</label>                  
+                <input class="form-control me-2" type="email" placeholder="CORREO PACIENTE" aria-label="Search" name="correopaciente">                  
               </div>
-              <div class="col-md-6">              
-                    <input class="form-control me-2" type="search" placeholder="CIUDAD" aria-label="Search" name="ciudad">
-              </div>
-            </div>
-
-            <div class="row mt-3">            
-              <div class="col-md-6">                  
-                <input class="form-control me-2" type="search" placeholder="DIRECCIÓN" aria-label="Search" name="direccion">                  
-              </div>
-              <div class="col-md-6">              
-                    <input class="form-control me-2" type="search" placeholder="CONSULTORIO" aria-label="Search" name="consultorio">
+              <div class="col-md-6"style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Pais nacimiento:</label>            
+                    <input class="form-control me-2" type="search" placeholder="PAIS NACIMIENTO" aria-label="Search" name="lugarnacimiento">
               </div>
             </div>
 
             <div class="row mt-3">            
-              <div class="col-md-6">                  
-                <input class="form-control me-2" type="search" placeholder="CELULAR" aria-label="Search" name="celular" required>                  
+              <div class="col-md-6"style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Celular paciente:</label>                 
+                <input class="form-control me-2" type="tel" pattern="\+\d{1,2} \d{1,10}" placeholder="+1 1234567890" aria-label="Search" name="celularpaciente" required>                  
               </div>
-              <div class="col-md-6">              
-                    <input class="form-control me-2" type="search" placeholder="CORREO" aria-label="Search" name="correo" required>
+              <div class="col-md-6"style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Ciudad nacimiento:</label>            
+                    <input class="form-control me-2" type="search" placeholder="CIUDAD DE NACIMIENTO" aria-label="Search" name="ciudaddenacimiento">
               </div>
             </div>
+
+            <div class="row mt-3">            
+              <div class="col-md-6" style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Cirujano:</label>                    
+                <input class="form-control me-2" type="search" placeholder="CIRUJANO" aria-label="Search" name="cirujano" required>                  
+              </div>
+              <div class="col-md-6"style="text-align: left;">
+                    <label  style="text-align: left; font-weight: bold;">Correo Cirujano:</label>              
+                    <input class="form-control me-2" type="email" placeholder="CORREO CIRUJANO" aria-label="Search" name="correocirujano" required>
+              </div>
+            </div>
+
+            <h2>Información del responsable</h2>
+
+            <div class="row mt-3">
+              <div class="col-md-6" style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Tipo Doc:</label>         
+                <select class="form-select me-2" aria-label="SELECCIONE TIPO ID..." name="reopcionesid" required>
+                  <option value="" selected>SELECCIONE TIPO ID...</option>
+                  <option value="CC">CÉDULA DE CIUDADANÍA</option>
+                  <option value="PST">PASAPORTE</option>
+                  <option value="CE">CÉDULA EXTRANJERA</option>
+                  <option value="CEC">CÉDULA DE EXTRANJERÍA COLOMBIANA</option>
+                  <option value="RC">REGISTRO CIVIL</option>
+                  <option value="CI">CARNET DE IDENTIDAD</option>
+                  <option value="DNI">DOCUMENTO NACIONAL DE IDENTIDAD</option>
+                  <!-- Agrega más opciones según sea necesario -->
+                </select>
+              </div>
+              <div class="col-md-6"style="text-align: left;">
+                <label  style="text-align: left; font-weight: bold;">Num doc:</label>       
+                <input class="form-control me-2" type="search" placeholder="NÚMERO DOC" aria-label="Search" name="renumdoc" required>
+              </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-6"style="text-align: left;">
+              <label  style="text-align: left; font-weight: bold;">Nombre(s):</label>          
+              <input class="form-control me-2" type="search" placeholder="NOMBRE(S)" aria-label="Search" name="renombre" required>
+            </div>
+            <div class="col-md-6" style="text-align: left;">
+              <label  style="text-align: left; font-weight: bold;">Apellido:</label>       
+              <input class="form-control me-2" type="search" placeholder="APELLIDO(S)" aria-label="Search" name="reapellido" required>
+            </div>
+          </div>
+
+          <div class="row mt-3">            
+            <div class="col-md-6"style="text-align: left;">
+              <label  style="text-align: left; font-weight: bold;">Celular:</label>                 
+              <input class="form-control me-2" type="tel" pattern="\+\d{1,2} \d{1,10}" placeholder="+1 1234567890" aria-label="Search" name="recelular" required>                  
+            </div>
+            <div class="col-md-6"style="text-align: left;">
+              <label  style="text-align: left; font-weight: bold;">Parentesco:</label>            
+                  <input class="form-control me-2" type="search" placeholder="PARENTESCO" aria-label="Search" name="reparentesco">
+            </div>
+          </div>
+
+          <div class="row mt-3">            
+            <div class="col-md-6" style="text-align: left;">
+              <label  style="text-align: left; font-weight: bold;">Ciudad:</label>                    
+              <input class="form-control me-2" type="search" placeholder="CIUDAD" aria-label="Search" name="reciudad" required>                  
+            </div>
+            <div class="col-md-6"style="text-align: left;">
+                  <label  style="text-align: left; font-weight: bold;">Correo:</label>              
+                  <input class="form-control me-2" type="email" placeholder="CORREO" aria-label="Search" name="recorreo" >
+            </div>
+          </div>
+
+            
 
 
             <div class="mt-3">
@@ -128,6 +239,10 @@
       </div>
         
       </form>
+
+
+
+
 
         
         {% if tipo_doc %}
