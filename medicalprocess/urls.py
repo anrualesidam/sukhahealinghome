@@ -13,6 +13,7 @@ urlpatterns = [
     path('contactloginandminstrador/', Home().contactloginadministrador, name='contactloginandminstrador'),
     path('ingresarcirujano/', ingresarinformacion().ingresarcirujano, name='ingresarcirujano'),
     path('ingresarpacientes/', ingresarinformacion().ingresarpacientes, name='ingresarpacientes'),
+    path('ingresarhistoriaclinica/', ingresarinformacion().ingresarhistoriaclinica, name='ingresarhistoriaclinica'),
     #path('search/', SearchCirujano().search_pacientes, name='search'),
     
 ]

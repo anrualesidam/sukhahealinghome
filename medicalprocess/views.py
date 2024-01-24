@@ -192,6 +192,9 @@ class Home:
         return render(request, "contactloadministrador.html")
 
 class ingresarinformacion:
+    def __init__(self):
+        # Creando una instancia de la ClaseInterna
+        self.Home = Home()
 
     def ingresarcirujano(self,request):
         
@@ -337,6 +340,27 @@ class ingresarinformacion:
                 return render(request, 'alert_nofile_ingreso.html')
         else:
             return render(request, 'ingresarpacientes.html')
+    
+    def ingresarhistoriaclinica(self,request):
+
+        id_numer = request.GET.get('buscadorid')
+        tipo_id = request.GET.get('opcionesid')
+        tipousercompleto=request.session.get('tipousercompleto')
+        
+        key_search=str(tipo_id)+'_'+str(id_numer)
+
+        #print(key_search,tipousercompleto)
+        
+        try:
+            resultadosdatosusuario=self.Home.buscar_usuario_admin(key_search)
+            resultadosresponsable=self.Home.buscar_responsable_usuario(key_search)
+
+            resultadoss = {**resultadosdatosusuario, **resultadosresponsable}
+            resultadoss['tipo_usuario_completo']=tipousercompleto
+        except:
+            resultadoss={'tipo_usuario_completo':"ENFERMERA/O"}
+
+        return render(request,"ingresarhistoriaclinica.html",resultadoss)
 
 """
 class SearchCirujano:
