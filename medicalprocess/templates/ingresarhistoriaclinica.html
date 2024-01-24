@@ -56,7 +56,7 @@
             <a class="nav-link" href="{% url 'homeenfermera' %}">Busqueda pacientes</a>
          </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'ingresarhistoriaclinica' %}"> Ingresar historia clínica </a>
+            <a class="nav-link" href="{% url 'preingresarhistoriaclinica' %}"> Ingresar historia clínica </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"> Tu perfil</a>
@@ -67,10 +67,10 @@
       </aside>
       <main class="col-lg-9">
         <p style="font-size: 18px;">
-          Ingresar el número de documento o nombre completo del paciente.
+          Historia clinica - Ingresar número de documento del paciente.
           </p>
 
-        <form class="d-flex" action="{% url 'ingresarhistoriaclinica' %}" method="GET">
+        <form class="d-flex" action="{% url 'preingresarhistoriaclinica' %}" method="GET">
           <select class="form-select me-2" aria-label="SELECCIONE TIPO ID..." name="opcionesid" required>
             <option value="" selected>SELECCIONE TIPO ID...</option>
             <option value="CC">CÉDULA DE CIUDADANÍA</option>
@@ -179,7 +179,7 @@
         <main class="col-lg-9">
         
           <h2>Reporte signos vitales</h2>
-          <form class="d-flex" action="{% url 'ingresarhistoriaclinica' %}" method="GET">
+          <form class="d-flex" action="{% url 'preingresarhistoriaclinica' %}" method="GET">
           
           <div class="row" style="display: flex;
           justify-content: center; /* Centra horizontalmente */
@@ -205,15 +205,15 @@
                   <input class="form-control me-2" type="number" placeholder="TEMPERATURA CORPORAL" aria-label="Search" name="temperaturacorporal" required step="0.1">                  
                 </div>
                 <div class="col-md-6"style="text-align: left;">
-                  <label  style="text-align: left; font-weight: bold;">Pulso:</label>            
-                  <input class="form-control me-2" type="number" placeholder="PULSO" aria-label="Pulso" name="pulso" min="0" required>
+                  <label  style="text-align: left; font-weight: bold;">Frecuencia cardiaca:</label>            
+                  <input class="form-control me-2" type="number" placeholder="FECUENCIA CARDIACA" aria-label="Pulso" name="fecuenciacardiaca" min="0" required>
                 </div>
               </div>
   
               <div class="row mt-3">            
                 <div class="col-md-6"style="text-align: left;">
-                  <label  style="text-align: left; font-weight: bold;">Frecuencia respiratoria:</label>                 
-                  <input class="form-control me-2" type="number" placeholder="FRECUENCIA RESPIRATORIA" aria-label="Frecuencia Respiratoria" name="frecuenciarespiratoria" required min="0">
+                  <label  style="text-align: left; font-weight: bold;">SATURACIÓN:</label>                 
+                  <input class="form-control me-2" type="number" placeholder="SATURACIÓN" aria-label="Frecuencia Respiratoria" name="saturacion" required min="0">
                   
                 </div>
                 <div class="col-md-6"style="text-align: left;">
@@ -230,10 +230,10 @@
                 <div class="col-md-6" style="text-align: left;">
                   <label  style="text-align: left; font-weight: bold;">Tipo Observación</label>         
                   <select class="form-select me-2" aria-label="SELECCIONE TIPO ID..." name="tipoobservacion" required>
-                    <option value="" selected>SELECCIONE TIPO OBSERVACION...</option>
-                    <option value="OBM">MÉDICA</option>
-                    <option value="OBA">ALIMENTACIÓN</option>
-                    <option value="OBO">OTRO</option>
+                    
+                    <option value="MÉDICA">MÉDICA</option>
+                    <option value="ALIMENTACIÓN">ALIMENTACIÓN</option>
+                    <option value="OTRO">OTRO</option>
                     <!-- Agrega más opciones según sea necesario -->
                   </select>
                 </div>
@@ -242,7 +242,7 @@
            
             <div class="mt-3" style="text-align: left;">
               <label style="text-align: left; font-weight: bold;">Observaciones:</label>
-              <textarea class="form-control me-2" placeholder="Observaciones" aria-label="OBSERVACIONES" name="Observaciones" required></textarea>
+              <textarea class="form-control me-2" placeholder="Observaciones" aria-label="OBSERVACIONES" name="observaciones" ></textarea>
           </div>
           
 
@@ -253,7 +253,7 @@
   
               <div class="mt-3">
                 <button class="btn btn-outline-success me-2" type="submit">Ingresar</button>
-                <a href="{% url 'ingresarhistoriaclinica' %}" class="btn btn-outline-secondary">Cancelar</a>
+                <a href="{% url 'preingresarhistoriaclinica' %}" class="btn btn-outline-secondary">Cancelar</a>
               </div>
         </div>
           

@@ -98,7 +98,7 @@ class Home:
         
         correokey=db.collection('pacientes').document(key).collection("info_paciente").document("paciente").get().to_dict()["correo_cir"]
         #db.collection('pacientes').document(key).get().to_dict()["correo"]
-        print("urldoc",correokey)
+        #print("urldoc",correokey)
         docs = db.collection('cirujanos').document(correokey).collection("pacientes").document(key)
         return docs.get().to_dict()
 
@@ -106,6 +106,17 @@ class Home:
         
         responsabledicc=db.collection('pacientes').document(key).collection("info_paciente").document("responsable")
         return responsabledicc.get().to_dict()
+    
+    def buscar_historico_usuario(self,key):
+        
+        historicodb = db.collection('pacientes').document(key).collection("historico")
+        docs = historicodb.stream()
+
+        for doc in docs:
+            print(f"Document ID: {doc.id}")
+            print("Data:", doc.to_dict())
+
+        return docs#.get().to_dict()
 
     
     # BUSCARDORES DE USUARIOS
@@ -143,7 +154,7 @@ class Home:
         key_search=str(tipo_id)+'_'+str(id_numer)
 
         #print(key_search,tipousercompleto)
-        
+        #print(self.buscar_historico_usuario(key_search))
         try:
             resultadosdatosusuario=self.buscar_usuario_admin(key_search)
             resultadosresponsable=self.buscar_responsable_usuario(key_search)
@@ -178,7 +189,7 @@ class Home:
         except:
             resultadoss={'tipo_usuario_completo':"ADMINISTRADOR/A"}
 
-        print("resultados",resultadoss)
+        #print("resultados",resultadoss)
         return render(request, 'homeadministrador.html', resultadoss)
 
 
@@ -212,7 +223,7 @@ class ingresarinformacion:
 
 
         # Define la referencia del documento con la cédula como identificador
-        print(correo)
+        #print(correo)
         if correo != "NONE":
                 doc_ref = db.collection('cirujanoinfo').document(correo)
 
@@ -259,7 +270,7 @@ class ingresarinformacion:
 
 
         # Define la referencia del documento con la cédula como identificador
-        print(fechadenacimiento,nombre,apellido)
+        #print(fechadenacimiento,nombre,apellido)
         
 
         # Responsable
@@ -341,26 +352,69 @@ class ingresarinformacion:
         else:
             return render(request, 'ingresarpacientes.html')
     
-    def ingresarhistoriaclinica(self,request):
+    def preingresarhistoriaclinica(self,request):
 
         id_numer = request.GET.get('buscadorid')
         tipo_id = request.GET.get('opcionesid')
         tipousercompleto=request.session.get('tipousercompleto')
+
+
         
         key_search=str(tipo_id)+'_'+str(id_numer)
-
-        #print(key_search,tipousercompleto)
         
+
+        fechasignosvitales=request.GET.get('fechasignosvitales')
+        horasignosvitales=request.GET.get('horasignosvitales')
+        temperaturacorporal=str(request.GET.get('temperaturacorporal')).upper()
+        fecuenciacardiaca=str(request.GET.get('fecuenciacardiaca')).upper()
+        saturacion=str(request.GET.get('saturacion')).upper()
+        presionarterial=str(request.GET.get('presionarterial')).upper()
+        tipoobservacion=str(request.GET.get('tipoobservacion')).upper()
+        observaciones=str(request.GET.get('observaciones')).upper()
+        
+       
         try:
             resultadosdatosusuario=self.Home.buscar_usuario_admin(key_search)
             resultadosresponsable=self.Home.buscar_responsable_usuario(key_search)
 
             resultadoss = {**resultadosdatosusuario, **resultadosresponsable}
             resultadoss['tipo_usuario_completo']=tipousercompleto
-        except:
-            resultadoss={'tipo_usuario_completo':"ENFERMERA/O"}
 
-        return render(request,"ingresarhistoriaclinica.html",resultadoss)
+        except:
+            
+            resultadoss={'tipo_usuario_completo':"ENFERMERA/O"}
+        
+        if str(fechasignosvitales) != "None":
+
+            key_searchn=request.session.get('key_search')
+
+            doc_ref = db.collection('pacientes').document(key_searchn).collection("historico").document(str(fechasignosvitales))\
+                .collection(str(horasignosvitales)).document("signosvitales")
+
+                # Agrega los datos al documento
+            doc_ref.set({'fecha':fechasignosvitales,
+                         'hora':horasignosvitales,
+                         'temperatura_corporal':temperaturacorporal,
+                        'fecuencia_cardiaca':fecuenciacardiaca,
+                        'saturacion':saturacion,
+                        'presion_arterial':presionarterial,
+                        })
+            
+            doc_refob = db.collection('pacientes').document(key_searchn).collection("historico").document(str(fechasignosvitales))\
+                .collection(str(horasignosvitales)).document("observaciones")
+            
+            if observaciones!="":
+                doc_refob.set({'tipo_observacion':tipoobservacion,
+                            'observaciones':observaciones})
+
+
+            messages.warning(
+            request, 'Ingresado el historico del paciente {}'.format( key_searchn))
+            return render(request, 'alert_nofile_historiaclinica.html')
+        
+        else:
+            request.session['key_search'] =key_search
+            return render(request,"ingresarhistoriaclinica.html",resultadoss)
 
 """
 class SearchCirujano:
